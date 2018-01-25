@@ -36,12 +36,12 @@ public interface AdminMapper {
 	 */
 	public List<Admin> queryAllAdmin();
 	/**
-	 * 方法功能说明： 根据管理员id查看其日志 
+	 * 方法功能说明： 根据管理员id分页查看其日志 
 	 * 创建：2018年1月25日 by Judy   
 	 * @param andminId 管理员id
 	 * @return Log    
 	 */
-	public List<Log> queryLogByAdminId(int andminId);
+	public List<Log> queryLogByAdminId(int andminId,int start,int size);
 	/**
 	 * 方法功能说明：  分页查询管理员
 	 * 创建：2018年1月25日 by Judy   
@@ -56,4 +56,11 @@ public interface AdminMapper {
 	 * @return int    
 	 */
 	public int queryTotalNum();
+	/**
+	 * 方法功能说明：  获得日志的总条数
+	 * 创建：2018年1月25日 by Judy
+	 * @param adminId 管理员id  
+	 * @return int    
+	 */
+	public int queryLogNum(int adminId);
 }

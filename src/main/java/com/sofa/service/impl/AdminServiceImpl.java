@@ -36,8 +36,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<Log> queryLogByAdminId(int adminId) {
-		return adminDao.queryLogByAdminId(adminId);
+	public List<Log> queryLogByAdminId(int adminId,int start,int size) {
+		return adminDao.queryLogByAdminId(adminId,start,size);
 	}
 
 	@Override
@@ -48,6 +48,12 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int queryTotalNum() {
 		return adminDao.queryTotalNum();
+	}
+
+	@Override
+	public int queryLogNum(int adminId) {
+		// TODO Auto-generated method stub
+		return adminDao.queryLogNum(adminId);
 	}
 
 }

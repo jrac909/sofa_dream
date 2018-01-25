@@ -10,7 +10,8 @@ public interface AdminService {
 	public List<Admin> queryAllAdmin();
 	public int deleteAdminById(int id);
 	public int updateAdminById(Admin admin);
-	public List<Log> queryLogByAdminId(int adminId);
+	public List<Log> queryLogByAdminId(int adminId,int start,int size);
 	public List<Admin> queryAdminByPage(int start,int size);
 	public int queryTotalNum();
+	public int queryLogNum(int adminId);
 }

@@ -22,7 +22,7 @@
 	</label>
 	<input type="hidden" name="createTime" value="" />
 	<input type="hidden" name="updateTime" value="" />
-	<input type="submit" value="添加" />
+	<input type="submit" value="添加管理员" />
 	</form>
 	<br/>
 	<form action="${pageContext.request.contextPath }/updateAdmin" method="post">
@@ -38,22 +38,24 @@
 	</label>
 	<input type="hidden" name="createTime" value="" />
 	<input type="hidden" name="updateTime" value="" />
-	<input type="submit" value="修改" />
+	<input type="submit" value="修改管理员" />
 	</form>
 	<br/>
 	<form action="${pageContext.request.contextPath}/deleteAdmin" method="post">
 		<input type="text" name="id" value="4" />
-		<input type="submit" value="删除">
+		<input type="submit" value="删除管理员">
 	</form>
 	<br/>
 	<form action="${pageContext.request.contextPath}/getLog" method="post">
 		<input type="text" name="adminId" value="2" />
+		<input typr="text" name="page" value="1" />
+		<input type="text" name="size" value="5"/>
 		<input type="submit" value="查看日志">
 	</form>
 	<form action="${pageContext.request.contextPath}/getPageAdmin" method="post">
 		<input type="text" name="size" value="5" />
 		<input type="text" name="page" value="1">
-		<input type="submit" value="分页查看">
+		<input type="submit" value="分页查看管理员">
 	</form>
 </body>
 </html>
