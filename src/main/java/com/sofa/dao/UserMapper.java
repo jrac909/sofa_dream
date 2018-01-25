@@ -1,5 +1,7 @@
 package com.sofa.dao;
 
+import java.util.List;
+
 import com.sofa.model.User;
 
 /**
@@ -30,5 +32,24 @@ public interface UserMapper {
 	 */
 	public int delUser(Integer id);
 	
+	/**
+	 * 根据 id 批量删除用户记录
+	 * @param ids id数组
+	 * @return
+	 */
 	public int batchDelUser(Integer[] ids);
+	
+	/**
+	 * 根据 id 修改用户信息
+	 * @param id
+	 * @return
+	 */
+	public int updateUser(User user);
+	
+	/**
+	 * 根据条件查找用户
+	 * @param user
+	 * @return
+	 */
+	public List<User> queryUsers(User user);
 }

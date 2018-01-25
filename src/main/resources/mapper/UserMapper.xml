@@ -53,4 +53,31 @@
     		</foreach>
     	</where>
     </delete>
+    <!-- 根据id修改用户信息 -->
+    <update id="updateUser">
+    	UPDATE user SET
+    		password=#{password},
+    		role=#{role},
+    		status=#{status},
+    		update_date=#{update_date}
+    		<where>
+    			id=#{id}
+    		</where>
+    </update>
+    <!-- 根据条件查找用户 -->
+    <select id="queryUsers" resultType="com.sofa.model.User">
+    	SELECT * FROM user
+    	<where>
+    		(username LIKE #{username} OR email LIKE #{email})
+    		<if test="role != null">
+    			AND role=#{role}
+    		</if>
+    		<if test="vip != null">
+    			AND vip=#{vip}
+    		</if>
+    		<if test="status != null">
+    			AND status=#{status}
+    		</if>
+    	</where>
+    </select>
 </mapper>

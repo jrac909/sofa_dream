@@ -1,5 +1,7 @@
 package com.sofa.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,16 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int batchDelUser(Integer[] ids) {
 		return userMapper.batchDelUser(ids);
+	}
+
+	@Override
+	public int updateUser(User user) {
+		return userMapper.updateUser(user);
+	}
+
+	@Override
+	public List<User> queryUsers(User user) {
+		return userMapper.queryUsers(user);
 	}
 
 }

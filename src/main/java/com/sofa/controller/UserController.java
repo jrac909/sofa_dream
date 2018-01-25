@@ -92,4 +92,36 @@ public class UserController {
 		
 		return responseDTO;
 	}
+	
+	/**
+	 * 修改用户信息
+	 * @return
+	 */
+	@RequestMapping(value="/update")
+	public ResponseDTO update(@ModelAttribute()User user){
+		ResponseDTO responseDTO = new ResponseDTO();
+		user.setUpdate_date("修改后时间");
+		int flag = userService.updateUser(user);
+		
+		if (flag != 0){
+			responseDTO.setStatus(0);
+		} else {
+			responseDTO.setStatus(1);
+		}
+		
+		responseDTO.setMsg("成功");
+		responseDTO.setData("修改用户成功");
+		return responseDTO;
+	}
+	/**
+	 * 根据条件查询用户
+	 * @return
+	 */
+	@RequestMapping(value="/query")
+	public ResponseDTO query(@ModelAttribute()User user){
+		// String username, String email, Integer role, Integer vip, Integer status
+		ResponseDTO responseDTO = new ResponseDTO();
+		
+		return responseDTO;
+	}
 }

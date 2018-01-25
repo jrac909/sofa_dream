@@ -11,6 +11,7 @@
 	<button onclick="adduser()" value="添加用户">添加用户</button>
 	<button onclick="deluser()" value="删除用户">删除用户</button>
 	<button onclick="batchDelUser()" value="批量删除">批量删除</button>
+	<button onclick="updateUser()" value="修改用户">修改用户</button>
 </body>
 <script type="text/javascript" src="<%=request.getContextPath()%>/static/jquery-3.2.0.js"></script>
 <script type="text/javascript">
@@ -97,6 +98,28 @@ function batchDelUser(){
 		},
 		error:function(){
 			alert("批量删除失败");
+		}
+	})
+}
+
+function updateUser(){
+	alert("调用修改用户");
+	$.ajax({
+		data:{
+			'id':2,
+			'password':'123456',
+			'role':3,
+			'status':0
+		},
+		url:'/Sofa/user/update',
+		type:'POST',
+		dataType:'json',
+		contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+		success:function (data){
+			alert("修改成功");
+		},
+		error:function(){
+			alert("修改失败");
 		}
 	})
 }
