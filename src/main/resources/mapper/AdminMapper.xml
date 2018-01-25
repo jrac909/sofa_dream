@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sofa.dao.AdminMapper">
+ 	<insert id="insertNewAdmin" parameterType="com.sofa.model.Admin">
+		INSERT INTO admin (adminname,password,photo,number,role,create_time) VALUES
+			(#{adminName},#{password},#{photo},#{number},#{role},#{createTime})
+	</insert>
+	<select id="queryAllAdmin"  resultType="com.sofa.model.Admin">
+		SELECT * FROM admin
+	</select>
+	<update id="updateAdminById" parameterType="com.sofa.model.Admin">
+		UPDATE admin SET adminname=#{adminName},password=#{password},photo=#{photo},
+			number=#{number},role=#{role},update_time=#{updateTime}
+		<where>
+			id=#{id}
+		</where>
+	</update>
+	<delete id="deleteAdminById" parameterType="Integer" >
+		DELETE FROM admin 
+		<where>
+			id=#{id}
+		</where>
+	</delete>
+	<select id="queryLogByAdminId" parameterType="Integer" resultType="com.sofa.model.Log">
+		SELECT * FROM log 
+		<where>
+			admin_id=#{adminId}
+		</where>
+	</select>
+	<select id="queryAdminByPage" parameterType="Integer" resultType="com.sofa.model.Admin">
+		SELECT * FROM admin order by id  limit #{arg0},#{arg1}
+	</select>
+	<select id="queryTotalNum" resultType="Integer">
+		SELECT count(*) FROM admin
+	</select>
+</mapper>
