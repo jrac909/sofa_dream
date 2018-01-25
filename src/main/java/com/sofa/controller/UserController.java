@@ -1,8 +1,11 @@
 package com.sofa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.annotation.RequestScope;
 
 import com.sofa.common.ResponseDTO;
 import com.sofa.model.User;
@@ -26,14 +29,28 @@ public class UserController {
 	 */
 	@RequestMapping(value="/get")
 	public ResponseDTO get(Integer id){
-		System.out.println("请求到这里了...");
 		ResponseDTO responseDTO = new ResponseDTO();
-		User user = userService.getUserById(1);
+		User user = userService.getUserById(id);
 		
 		responseDTO.setData(user);
 		responseDTO.setMsg("成功");
 		responseDTO.setStatus(0);
 		
 		return responseDTO;
+	}
+	/**
+	 * 管理员创建用户
+	 * @return
+	 */
+	@RequestMapping(value="/add")
+	public ResponseDTO add(@ModelAttribute()User user){
+		ResponseDTO responseDTO = new ResponseDTO();
+		int flag = userService.addUser(user);
+		if (flag != 0){
+			responseDTO.setStatus(0);
+		} else {
+			responseDTO.setStatus(1);
+		}
+		return responseDTO;	
 	}
 }

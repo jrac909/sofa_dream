@@ -6,4 +6,6 @@ import com.sofa.model.User;
 
 public interface UserService {
 	public User getUserById(Integer id);
+	
+	public int addUser(User user);
 }

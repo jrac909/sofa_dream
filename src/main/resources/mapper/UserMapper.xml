@@ -9,4 +9,31 @@
         	id=#{id}
         </where>
     </select>
+    <!-- 添加一条用户记录 -->
+    <!-- useGeneratedKeys="true" 即把自增的主键赋给keyProperty="id" -->
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+    	INSERT INTO user(
+    		username,
+    		password,
+    		email,
+    		photo,
+    		sign,
+    		role,
+    		vip,
+    		status,
+    		create_date,
+    		update_date
+    	)VALUES(
+    		#{username},
+    		#{password},
+    		#{email},
+    		#{photo},
+    		#{sign},
+    		#{role},
+    		#{vip},
+    		#{status},
+    		#{create_date},
+    		#{update_date}
+    	)
+    </insert>
 </mapper>

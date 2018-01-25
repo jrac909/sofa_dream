@@ -15,4 +15,11 @@ public interface UserMapper {
 	 * @return 用户信息
 	 */
 	public User getUserById(Integer id);
+	
+	/**
+	 * 插入一条用户记录
+	 * @param user
+	 * @return 改变记录的条数
+	 */
+	public int insertUser(User user);
 }

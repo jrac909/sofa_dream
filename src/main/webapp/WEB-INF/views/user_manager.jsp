@@ -8,6 +8,7 @@
 </head>
 <body>
 	<button onclick="getuser()" value="获取用户">获取用户</button>
+	<button onclick="adduser()" value="添加用户">添加用户</button>
 </body>
 <script type="text/javascript" src="<%=request.getContextPath()%>/static/jquery-3.2.0.js"></script>
 <script type="text/javascript">
@@ -15,23 +16,47 @@ function getuser(){
 	alert("成功调用函数");
 	$.ajax({
 		data : {
-	        "phoneNoNums" : "12" //请求的手机号码
+	        "id" : "1" //用户id
 	    },
 	    url:"/Sofa/user/get",
 	    dataType:"json",
-
+	    type:'POST',
+		contentType:"application/x-www-form-urlencoded; charset=UTF-8",
 	    success : function(result){
 	        var showMess = result.msg;//失败提示消息
 	        if(!showMess){
 	        	showMess = "系统忙,请稍后重试";
 	        }
-	        //获取可售的手机号码
 	        var phoneNos = result.data.username;
 	      	alert(phoneNos);
 	    },
 	    error : function() {
 			alert("cuole");
 	    }
+	})
+}
+function adduser(){
+	alert("成功调用函数");
+	$.ajax({
+		data : {
+			"username":"用户004",
+			"password":"密码",
+			"email":"邮箱",
+			"photo":"头像",
+			"sign":"梦里清风明月",
+			"role":1,
+			"vip":7,
+			"status":0,
+			"create_date":"创建时间",
+			"update_date":"修改时间"
+	    },
+		url:"/Sofa/user/add",
+		dataType:"json",
+		type:'POST',
+		contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+		success:function (data){
+			alert("成功");
+		}
 	})
 }
 </script>
