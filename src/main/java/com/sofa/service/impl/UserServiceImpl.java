@@ -22,4 +22,14 @@ public class UserServiceImpl implements UserService{
 		return userMapper.insertUser(user);
 	}
 
+	@Override
+	public int delUser(Integer id) {
+		return userMapper.delUser(id);
+	}
+
+	@Override
+	public int batchDelUser(Integer[] ids) {
+		return userMapper.batchDelUser(ids);
+	}
+
 }

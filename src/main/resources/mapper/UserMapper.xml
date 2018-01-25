@@ -36,4 +36,21 @@
     		#{update_date}
     	)
     </insert>
+    <!-- 删除指定 id 用户 -->
+    <delete id="delUser">
+    	DELETE FROM user
+    	<where>
+    		id=#{id}
+    	</where>
+    </delete>
+    <!-- 批量删除指定 id 用户 -->
+    <delete id="batchDelUser" >
+    	DELETE FROM user
+    	<where>
+    		id IN
+    		<foreach collection="array" item="pre_id" open="(" separator="," close=")">
+    			#{pre_id}
+    		</foreach>
+    	</where>
+    </delete>
 </mapper>

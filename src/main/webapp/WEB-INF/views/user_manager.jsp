@@ -9,6 +9,8 @@
 <body>
 	<button onclick="getuser()" value="获取用户">获取用户</button>
 	<button onclick="adduser()" value="添加用户">添加用户</button>
+	<button onclick="deluser()" value="删除用户">删除用户</button>
+	<button onclick="batchDelUser()" value="批量删除">批量删除</button>
 </body>
 <script type="text/javascript" src="<%=request.getContextPath()%>/static/jquery-3.2.0.js"></script>
 <script type="text/javascript">
@@ -56,6 +58,45 @@ function adduser(){
 		contentType:"application/x-www-form-urlencoded; charset=UTF-8",
 		success:function (data){
 			alert("成功");
+		}
+	})
+}
+function deluser(){
+	alert("调用删除");
+	$.ajax({
+		data:{
+			'id':1
+		},
+		url:'/Sofa/user/del',
+		type:'POST',
+		dataType:'json',
+		contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+		success:function (data){
+			alert("成功删除");
+		},
+		error:function(){
+			alert("删除失败");
+		}
+	})
+}
+function batchDelUser(){
+	alert("调用批量删除");
+	var ids = [];
+	ids.push(12);
+	ids.push(13);
+	$.ajax({
+		data:{
+			'ids':ids
+		},
+		url:'/Sofa/user/batchDel',
+		type:'POST',
+		dataType:'json',
+		contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+		success:function (data){
+			alert("批量删除成功");
+		},
+		error:function(){
+			alert("批量删除失败");
 		}
 	})
 }

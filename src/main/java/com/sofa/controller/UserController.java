@@ -53,4 +53,43 @@ public class UserController {
 		}
 		return responseDTO;	
 	}
+	
+	/**
+	 * 管理员删除指定 id用户
+	 * @return
+	 */
+	@RequestMapping(value="/del")
+	public ResponseDTO del(Integer id){
+		ResponseDTO responseDTO = new ResponseDTO();
+		int flag = userService.delUser(id);
+		if (flag != 0){
+			responseDTO.setStatus(0);
+		} else {
+			responseDTO.setStatus(1);
+		}
+		responseDTO.setMsg("成功");
+		responseDTO.setData("成功");
+		return responseDTO;
+	}
+	
+	/**
+	 * 批量删除指定 id 的用户
+	 * @return
+	 */
+	@RequestMapping(value="/batchDel")
+	public ResponseDTO batchDel(@RequestParam(value="ids[]") Integer[] ids){
+		ResponseDTO responseDTO = new ResponseDTO();
+		int flag = userService.batchDelUser(ids);
+		
+		if (flag != 0){
+			responseDTO.setStatus(0);
+		} else {
+			responseDTO.setStatus(1);
+		}
+		
+		responseDTO.setMsg("成功");
+		responseDTO.setData("批量删除成功");
+		
+		return responseDTO;
+	}
 }

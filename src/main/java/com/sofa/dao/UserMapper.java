@@ -22,4 +22,13 @@ public interface UserMapper {
 	 * @return 改变记录的条数
 	 */
 	public int insertUser(User user);
+	
+	/**
+	 * 删除一条用户记录
+	 * @param id
+	 * @return 操作记录条数
+	 */
+	public int delUser(Integer id);
+	
+	public int batchDelUser(Integer[] ids);
 }

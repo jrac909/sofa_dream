@@ -8,4 +8,8 @@ public interface UserService {
 	public User getUserById(Integer id);
 	
 	public int addUser(User user);
+	
+	public int delUser(Integer id);
+	
+	public int batchDelUser(Integer[] ids);
 }
