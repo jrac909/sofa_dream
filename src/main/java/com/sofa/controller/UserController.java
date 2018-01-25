@@ -26,6 +26,7 @@ public class UserController {
 	 */
 	@RequestMapping(value="/get")
 	public ResponseDTO get(Integer id){
+		System.out.println("请求到这里了...");
 		ResponseDTO responseDTO = new ResponseDTO();
 		User user = userService.getUserById(1);
 		

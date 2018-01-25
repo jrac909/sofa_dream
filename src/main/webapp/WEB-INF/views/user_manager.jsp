@@ -7,8 +7,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/Sofa/user/get">
-		<input type="submit" value="获取用户" />
-	</form>
+	<button onclick="getuser()" value="获取用户">获取用户</button>
 </body>
+<script type="text/javascript" src="<%=request.getContextPath()%>/static/jquery-3.2.0.js"></script>
+<script type="text/javascript">
+function getuser(){
+	alert("成功调用函数");
+	$.ajax({
+		data : {
+	        "phoneNoNums" : "12" //请求的手机号码
+	    },
+	    url:"/Sofa/user/get",
+	    dataType:"json",
+
+	    success : function(result){
+	        var showMess = result.msg;//失败提示消息
+	        if(!showMess){
+	        	showMess = "系统忙,请稍后重试";
+	        }
+	        //获取可售的手机号码
+	        var phoneNos = result.data.username;
+	      	alert(phoneNos);
+	    },
+	    error : function() {
+			alert("cuole");
+	    }
+	})
+}
+</script>
 </html>
