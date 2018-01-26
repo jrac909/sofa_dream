@@ -2,6 +2,8 @@ package com.sofa.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.sofa.model.Admin;
 import com.sofa.model.Log;
 
@@ -63,4 +65,13 @@ public interface AdminMapper {
 	 * @return int    
 	 */
 	public int queryLogNum(int adminId);
+	/**
+	 * 方法功能说明：  模糊查询管理员
+	 * 创建：2018年1月26日 by Judy   
+	 * @param adminName 管理员名字
+	 * @param number 管理员电话的
+	 * @param role 管理员角色
+	 * @return List<Admin>    
+	 */
+	public List<Admin> queryByImperfect(@Param("adminName") String adminName,@Param("number") String number,@Param("role") int role);
 }

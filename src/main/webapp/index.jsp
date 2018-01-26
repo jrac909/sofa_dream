@@ -57,5 +57,14 @@
 		<input type="text" name="page" value="1">
 		<input type="submit" value="分页查看管理员">
 	</form>
+	<form action="${pageContext.request.contextPath}/getAdmin" method="post">
+		<input type="text" name="adminName" value="" />
+		<input type="text" name="number" value="" />
+		<select name="role">
+			<option value="1">超级管理员</option>
+			<option value="2" selected>普通管理员</option>
+		</select>
+		<input type="submit" value="模糊查询"/>
+	</form>
 </body>
 </html>

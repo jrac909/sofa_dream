@@ -127,5 +127,19 @@ public class AdminController {
 		res.setStatus(1);
 		return res;
 	}
+	@RequestMapping("/getAdmin")
+	public ResponseDTO getAdmin(String adminName,String number,int role) {
+		ResponseDTO res = new ResponseDTO();
+		List<Admin> aList = adminService.queryByImperfect(adminName,number,role);
+		System.out.println(adminName+"\t"+number+"\t"+role);
+		for(Admin a:aList) {
+			System.out.println(a.getAdminName()+"\t"+a.getNumber()+"\t"+a.getRole());
+		}
+		res.setData(aList);
+		res.setMsg("查询成功");
+		res.setStatus(1);
+		
+		return res;
+	}
 
 }

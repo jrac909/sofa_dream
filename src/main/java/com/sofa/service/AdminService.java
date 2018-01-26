@@ -14,4 +14,5 @@ public interface AdminService {
 	public List<Admin> queryAdminByPage(int start,int size);
 	public int queryTotalNum();
 	public int queryLogNum(int adminId);
+	public List<Admin> queryByImperfect(String adminName,String number,int role);
 }

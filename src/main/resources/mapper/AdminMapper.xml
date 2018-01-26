@@ -41,4 +41,16 @@
 			admin_id=#{adminId}
 		</where>
 	</select>
+	<select id="queryByImperfect" resultType="com.sofa.model.Admin">
+		SELECT * FROM admin
+		<where>
+			role=#{role}
+			<if test='adminName!=null and adminName!=""'>
+				and adminname LIKE concat(concat("%",#{adminName}),"%")
+			</if>
+			<if test='number!=null and number!=""'>
+				and number LIKE concat(concat("%",#{number}),"%")
+			</if>
+		</where>
+	</select>
 </mapper>

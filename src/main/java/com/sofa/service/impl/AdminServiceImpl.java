@@ -56,4 +56,10 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.queryLogNum(adminId);
 	}
 
+	@Override
+	public List<Admin> queryByImperfect(String adminName, String number, int role) {
+		// TODO Auto-generated method stub
+		return adminDao.queryByImperfect(adminName, number, role);
+	}
+
 }
