@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.sofa.model.User;
+import com.sofa.util.PageBean;
 
 public interface UserService {
 	public User getUserById(Integer id);
@@ -18,4 +19,6 @@ public interface UserService {
 	public int updateUser(User user);
 	
 	public List<User> queryUsers(User user);
+	
+	public PageBean<User> getCurrentUser(Integer currentPage, Integer pageSize);
 }

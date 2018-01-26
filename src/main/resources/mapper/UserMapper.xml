@@ -68,7 +68,7 @@
     <select id="queryUsers" resultType="com.sofa.model.User">
     	SELECT * FROM user
     	<where>
-    		(username LIKE #{username} OR email LIKE #{email})
+    		(username LIKE CONCAT('%', #{username}, '%') OR email LIKE CONCAT('%', #{email}, '%'))
     		<if test="role != null">
     			AND role=#{role}
     		</if>
@@ -79,5 +79,21 @@
     			AND status=#{status}
     		</if>
     	</where>
+    <!-- 	ORDER BY id LIMIT #{start}, #{size} -->
+    </select>
+    <!-- 查询用户总记录数 -->
+    <select id="getUserNum" resultType="Integer">
+    	SELECT COUNT(*) FROM user
+    	<where>
+    		status=0
+    	</where>
+    </select>
+    <!-- 查询当前页所有用户 -->
+    <select id="getCurrentUser" resultType="com.sofa.model.User">
+    	SELECT * FROM user
+    	<where>
+    		status=0
+    	</where>
+    	ORDER BY id LIMIT #{arg0}, #{arg1}
     </select>
 </mapper>

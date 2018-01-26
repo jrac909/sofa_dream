@@ -12,6 +12,8 @@
 	<button onclick="deluser()" value="删除用户">删除用户</button>
 	<button onclick="batchDelUser()" value="批量删除">批量删除</button>
 	<button onclick="updateUser()" value="修改用户">修改用户</button>
+	<button onclick="queryUser()" value="条件查询">条件查询</button>
+	<button onclick="getUsers()" value="分页获取">分页获取</button>
 </body>
 <script type="text/javascript" src="<%=request.getContextPath()%>/static/jquery-3.2.0.js"></script>
 <script type="text/javascript">
@@ -120,6 +122,47 @@ function updateUser(){
 		},
 		error:function(){
 			alert("修改失败");
+		}
+	})
+}
+function queryUser(){
+	alert("调用条件查询");
+	$.ajax({
+		data:{
+			'username':'用户',
+			'email':'邮箱',
+			'role':'1',
+			'vip':'3',
+			'status':'0'
+		},
+		url:'/Sofa/user/query',
+		type:'POST',
+		dataType:'json',
+		contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+		success:function (data){
+			alert("条件查询成功");
+		},
+		error:function (){
+			alert("条件查询失败");
+		}
+	})
+}
+function getUsers(){
+	alert("调用分页获取");
+	$.ajax({
+		data:{
+			'currentPage':'2',
+			'pageSize':'3'
+		},
+		url:'/Sofa/user/getAll',
+		type:'POST',
+		dataType:'json',
+		contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+		success:function (data){
+			alert("获取用户成功");
+		},
+		error:function (){
+			alert("获取用户失败");
 		}
 	})
 }

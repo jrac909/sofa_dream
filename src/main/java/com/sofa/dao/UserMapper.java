@@ -52,4 +52,12 @@ public interface UserMapper {
 	 * @return
 	 */
 	public List<User> queryUsers(User user);
+	
+	/**
+	 * 查询用户总记录数
+	 * @return
+	 */
+	public int getUserNum();
+	
+	public List<User> getCurrentUser(Integer currentPage, Integer pageSize);
 }

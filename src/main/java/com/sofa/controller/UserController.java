@@ -1,5 +1,8 @@
 package com.sofa.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.context.annotation.RequestScope;
 import com.sofa.common.ResponseDTO;
 import com.sofa.model.User;
 import com.sofa.service.UserService;
+import com.sofa.util.PageBean;
 
 /**
  * 
@@ -121,7 +125,34 @@ public class UserController {
 	public ResponseDTO query(@ModelAttribute()User user){
 		// String username, String email, Integer role, Integer vip, Integer status
 		ResponseDTO responseDTO = new ResponseDTO();
+		List<User> userList = userService.queryUsers(user);
 		
+		/**如果查询为空, 把查询信息返回*/
+		if (userList == null){
+			userList = new ArrayList<>();
+			userList.add(user);
+			responseDTO.setStatus(1);
+		} else{
+			responseDTO.setStatus(0);
+		}
+		responseDTO.setData(userList);
+		responseDTO.setMsg("执行条件查询完成");
+		return responseDTO;
+	}
+	/**
+	 * 获取所有用户
+	 * @return
+	 */
+	@RequestMapping(value="/getAll")
+	public ResponseDTO getUsers(Integer currentPage, Integer pageSize){
+		ResponseDTO responseDTO = new ResponseDTO();
+		PageBean<User> pageBean = userService.getCurrentUser(currentPage, pageSize);
+		responseDTO.setData(pageBean);
+		responseDTO.setMsg("分页查询用户成功");
+		responseDTO.setStatus(0);
+		
+		System.out.println("查询出来的总条数:"+pageBean.getData().size());
+		System.out.println("分页后当前数据："+pageBean.getData().get(0).getUsername());
 		return responseDTO;
 	}
 }
